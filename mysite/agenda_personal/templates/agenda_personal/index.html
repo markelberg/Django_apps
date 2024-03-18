@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>Agenda de contactos</h1>
+    <form method="post" action="{% url 'agenda_personal:result' person.pk %}">
+        {% csrf_token %}
+        <label for="name">Nombre:</label>
+        <input type="text" id="name" name="name" value="{{ person.name }}"><br>
+        <label for="surname">Apellido:</label>
+        <input type="text" id="surname" name="surname" value="{{ person.surname }}"><br>
+        <label for="age">Edad:</label>
+        <input type="number" id="age" name="age" value="{{ person.age }}"><br>
+        <input type="submit" value="Guardar contacto">
+    </form>
+</body>
+</html>
