@@ -6,15 +6,22 @@
 </head>
 <body>
     <h1>Agenda de contactos</h1>
-    <form method="post" action="{% url 'agenda_personal:result' person.pk %}">
+    <form method="post" action="{% url 'agenda_personal:result' %}">
         {% csrf_token %}
         <label for="name">Nombre:</label>
-        <input type="text" id="name" name="name" value="{{ person.name }}"><br>
+        <input type="text" id="name" name="name"><br>
         <label for="surname">Apellido:</label>
-        <input type="text" id="surname" name="surname" value="{{ person.surname }}"><br>
+        <input type="text" id="surname" name="surname"><br>
         <label for="age">Edad:</label>
-        <input type="number" id="age" name="age" value="{{ person.age }}"><br>
+        <input type="number" id="age" name="age"><br>
         <input type="submit" value="Guardar contacto">
     </form>
+
+    <h2>Personas en tu agenda:</h2>
+    <ul>
+    {% for person in person_list %}
+        <li>{{ person.name }} {{ person.surname }} ({{ person.age }} años)</li>
+    {% endfor %}
+</ul>
 </body>
 </html>

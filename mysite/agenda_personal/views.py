@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views import generic
+from django.views.generic import View
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 
@@ -30,4 +31,4 @@ class ResultView(generic.DetailView):
         person = Person.objects.create(name=name, surname=surname, age=age)
 
         # Redirigir a una página de éxito o a donde necesites
-        return HttpResponseRedirect(reverse('agenda_personal:result'))
+        return redirect('agenda_personal:index')
